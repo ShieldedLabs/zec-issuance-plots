@@ -1,4 +1,5 @@
 mod consts;
+mod crossover;
 mod downsample;
 mod halving;
 mod idealtime;
@@ -8,16 +9,19 @@ mod subsidy;
 mod timebuckets;
 mod units;
 
-use self::plot::{DataSet, LinePlot};
 use crate::consts::{COIN, POST_BLOSSOM_HALVING_INTERVAL};
+use crate::crossover::display_nu5_vs_zpf_crossover_heights;
 use crate::halving::halving_height;
 use crate::idealtime::{bitcoin_block_target, Chain, DateTime, TimeModel};
+use crate::plot::{DataSet, LinePlot};
 use crate::subsidy::Subsidy::{self, Btc, PosterityFund, NU5};
 use crate::units::Zat;
 
 const PLOTS_DIR: &str = "plots";
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    display_nu5_vs_zpf_crossover_heights()?;
+
     plotsdir::refresh()?;
 
     let max_supply = 21_000_000f64;

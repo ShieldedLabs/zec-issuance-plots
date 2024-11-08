@@ -5,7 +5,7 @@ mod zpf;
 use crate::units::{Height, Zat};
 
 /// A subsidy scheme
-#[derive(Debug)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Subsidy {
     /// The subsidy scheme defined by Zcash as of NU5. (See Warning.)
     ///
